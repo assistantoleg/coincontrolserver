@@ -1,1 +1,1 @@
-# coincontrolserver
+How start: mvn install && mvn exec:java;
