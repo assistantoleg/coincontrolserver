@@ -2,20 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="682a69e5-99fa-48af-a343-13357e90c711" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/SubCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/SubCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/SubCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/controller/SubCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/model/SubCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/SubCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/SubCategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/CategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/CategoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/WalletDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/WalletDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/SubCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/SubCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/WalletService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/utils/HibernateSessionFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/utils/HibernateSessionFactoryUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/model/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/WalletServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/WalletServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ru.iambelyaev.coincontrolserver.storage.dao" />
+      <recent name="ru.iambelyaev.coincontrolserver.restapi.controller" />
+      <recent name="ru.iambelyaev.coincontrolserver.restapi.service" />
+      <recent name="ru.iambelyaev.coincontrolserver.restapi.model" />
+      <recent name="ru.iambelyaev.coincontrolserver.hibernate.services" />
+      <recent name="ru.iambelyaev.coincontrolserver.hibernate.dao" />
     </key>
   </component>
   <component name="RunManager">
@@ -137,6 +145,10 @@
     </state>
     <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1589650410017" />
     <state x="376" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/39.23.1401.877@39.23.1401.877" timestamp="1586974289861" />
+    <state x="458" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1589723003404">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1440.900@0.0.1440.900" timestamp="1589723003404" />
     <state width="1299" height="217" key="GridCell.Tab.0.bottom" timestamp="1583757032757">
       <screen x="43" y="23" width="1397" height="877" />
     </state>

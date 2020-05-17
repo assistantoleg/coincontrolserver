@@ -61,24 +61,36 @@ public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.rest
         return list;
     }
 
-//    @Override
-//    public Category read(int id) {
-//        return Category_REPOSITORY_MAP.get(id);
-//    }
-
     @Override
     public ResultInfo update(Category Category) {
-//        ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService categoryService =
-//                new ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService();
-//        ru.iambelyaev.coincontrolserver.hibernate.models.Category dbCategory =
-//                categoryService.findCategory(Category.getCategoryId());
-//        if( dbCategory.getUser().getId() == Category.getUserId()){
-//            dbCategory.setName(Category.getCategoryName());
-//            categoryService.updateCategory(dbCategory);
-//            return true;
-//        }
-//        return false;
-        return ResultInfo.OK;
+        if(Category.getCategoryName().isEmpty())
+            return ResultInfo.NameIsNull;
+        if(Category.getUserId() == 0)
+            return ResultInfo.IdIsNull;
+        if(Category.getCategoryId() == 0)
+            return ResultInfo.IdIsNull;
+        ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService categoryService =
+                new ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService();
+        if(categoryService.findCategoryByName(Category.getCategoryName(),Category.getUserId()).size() > 0)
+            return ResultInfo.AlreadyExist;
+
+        ru.iambelyaev.coincontrolserver.hibernate.services.UserService userService =
+                new ru.iambelyaev.coincontrolserver.hibernate.services.UserService();
+        ru.iambelyaev.coincontrolserver.hibernate.models.User dbUser =
+                userService.findUser(Category.getUserId());
+        if(dbUser != null) {
+            ru.iambelyaev.coincontrolserver.hibernate.models.Category dbCategory =
+                    categoryService.findCategory(Category.getCategoryId());
+            if(dbCategory != null) {
+                dbCategory.setUser(dbUser);
+                categoryService.updateCategory(dbCategory);
+                return ResultInfo.OK;
+            }else{
+                return ResultInfo.NotFoundId;
+            }
+        }else{
+            return ResultInfo.NotFoundId;
+        }
     }
 
     @Override
@@ -92,10 +104,5 @@ public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.rest
             return true;
         }
         return false;
-    }
-
-    @Override
-    public boolean subCategoryDelete(int categoryId, int subCategoryId) {
-        return true;
     }
 }

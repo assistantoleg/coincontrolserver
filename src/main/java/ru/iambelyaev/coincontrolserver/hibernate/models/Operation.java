@@ -15,8 +15,8 @@ public class Operation {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "sub_category_id")
+    private SubCategory subCategory;
 
     private LocalDateTime creation_time;
 
@@ -55,11 +55,11 @@ public class Operation {
         this.user = user;
     }
 
-    public Category getCategory() {
-        return category;
+    public SubCategory getSubCategory() {
+        return subCategory;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     public int getId() {

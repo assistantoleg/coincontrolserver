@@ -1,22 +1,22 @@
 package ru.iambelyaev.coincontrolserver.restapi.service;
 
 import ru.iambelyaev.coincontrolserver.ResultInfo;
-import ru.iambelyaev.coincontrolserver.restapi.model.Category;
+import ru.iambelyaev.coincontrolserver.restapi.model.SubCategory;
 
 import java.util.List;
 
-public interface CategoryService {
+public interface SubCategoryService {
     /**
      * Создает новую категорию
      * @param Category - категория для создания
      */
-    ResultInfo create(Category Category);
+    ResultInfo create(SubCategory SubCategory);
 
     /**
      * Возвращает список всех имеющихся категорий
      * @return список категорий
      */
-    List<Category> readAll(int userId);
+    List<SubCategory> readAll(int categoryId);
 
     /**
      * Обновляет клиента с заданным ID,
@@ -25,12 +25,13 @@ public interface CategoryService {
      * @param id - id клиента которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    ResultInfo update(Category Category);
+    ResultInfo update(SubCategory SubCategory);
 
     /**
      * Удаляет категорию с заданным ID
      * @param id - id клиента, которого нужно удалить
      * @return - true если клиент был удален, иначе false
      */
-    boolean categoryDelete(Integer userId, Integer categoryId);
+    boolean subCategoryDelete(Integer categoryId, Integer subCategoryId);
+
 }

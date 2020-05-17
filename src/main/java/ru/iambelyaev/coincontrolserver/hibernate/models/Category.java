@@ -24,7 +24,7 @@ public class Category {
     @org.hibernate.annotations.OnDelete(
             action = org.hibernate.annotations.OnDeleteAction.CASCADE
     )
-    private List<Operation> operations;
+    private List<SubCategory> subCategories;
 
     public Category() {
     }
@@ -58,13 +58,4 @@ public class Category {
         this.name = name;
     }
 
-    public void removeOperation(Operation operation) {
-        operations.remove(operation);
-    }
-    public List<Operation> getOperations() {
-        return operations;
-    }
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
-    }
 }

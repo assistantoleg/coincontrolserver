@@ -1,6 +1,7 @@
 package ru.iambelyaev.coincontrolserver.hibernate.dao;
 
 import ru.iambelyaev.coincontrolserver.hibernate.models.Category;
+import ru.iambelyaev.coincontrolserver.hibernate.models.SubCategory;
 import ru.iambelyaev.coincontrolserver.hibernate.models.Wallet;
 import ru.iambelyaev.coincontrolserver.hibernate.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
@@ -50,5 +51,15 @@ public class CategoryDao {
         session.delete(category);
         tx1.commit();
         session.close();
+    }
+
+    public List<SubCategory> findSubCategoryAll(int category_id) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List<SubCategory> subCategories = (List<SubCategory>)
+                session.createQuery("from SubCategory WHERE category_id = :param_category_id")
+                        .setParameter("param_category_id", category_id)
+                        .list();
+        session.close();
+        return subCategories;
     }
 }

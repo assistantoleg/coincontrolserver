@@ -17,11 +17,11 @@ public class SubCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
-    @org.hibernate.annotations.OnDelete(
-            action = org.hibernate.annotations.OnDeleteAction.CASCADE
-    )
-    private List<Operation> operations;
+//    @OneToMany(mappedBy = "subcategory", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @org.hibernate.annotations.OnDelete(
+//            action = org.hibernate.annotations.OnDeleteAction.CASCADE
+//    )
+//    private List<Operation> operations;
 
     public SubCategory() {
     }
@@ -30,12 +30,12 @@ public class SubCategory {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -55,13 +55,13 @@ public class SubCategory {
         this.name = name;
     }
 
-    public void removeOperation(Operation operation) {
-        operations.remove(operation);
-    }
-    public List<Operation> getOperations() {
-        return operations;
-    }
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
-    }
+//    public void removeOperation(Operation operation) {
+//        operations.remove(operation);
+//    }
+//    public List<Operation> getOperations() {
+//        return operations;
+//    }
+//    public void setOperations(List<Operation> operations) {
+//        this.operations = operations;
+//    }
 }

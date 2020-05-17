@@ -18,6 +18,7 @@ public class HibernateSessionFactoryUtil {
                 configuration.addAnnotatedClass(Category.class);
                 configuration.addAnnotatedClass(Operation.class);
                 configuration.addAnnotatedClass(Wallet.class);
+                configuration.addAnnotatedClass(SubCategory.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 
