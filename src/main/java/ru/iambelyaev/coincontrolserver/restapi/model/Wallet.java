@@ -1,46 +1,47 @@
 package ru.iambelyaev.coincontrolserver.restapi.model;
 
-import ru.iambelyaev.coincontrolserver.hibernate.models.User;
-
 public class Wallet {
-    private Integer id = 0;
-    private Integer user = 0;
-    private String name;
-    private Integer money = 0;
+    private Integer walletId = 0;
+    private Integer userId = 0;
+    private String walletName;
+    private Integer walletMoney = 0;
 
-    public Wallet(int id, int user, String name, int money) {
-        this.id = id;
-        this.user = user;
-        this.name = name;
-        this.money = money;
+    public Wallet(int walletId, int userId, String walletName, int walletMoney) {
+        this.walletId = walletId;
+        this.userId = userId;
+        this.walletName = walletName;
+        this.walletMoney = walletMoney;
     }
 
     public Wallet() {
     }
 
-    public int getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public  int getId() {
-        return id;
+    public  int getWalletId() {
+        return walletId;
+    }
+    public  void setWalletId(int walletId) {
+        this.walletId = walletId;
     }
 
-    public int getMoney() {
-        return money;
+    public int getWalletMoney() {
+        return walletMoney;
     }
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public void setWalletMoney(int walletMoney) {
+        this.walletMoney = walletMoney;
     }
 
-    public void setUser(User user) {
-        this.user = user.getId();
+    public String getWalletName() {
+        return walletName;
     }
+    public void setWalletName(String walletName) {
+        this.walletName = walletName;
+    }
+
 }

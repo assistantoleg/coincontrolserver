@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.iambelyaev.coincontrolserver.restapi.model.User;
 import ru.iambelyaev.coincontrolserver.hibernate.services.UserService;
 import ru.iambelyaev.coincontrolserver.hibernate.models.*;
+import ru.iambelyaev.coincontrolserver.ResultInfo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,16 +21,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class UserServiceImpl implements ru.iambelyaev.coincontrolserver.restapi.service.UserService {
     @Override
-    public boolean create(User User) {
-        System.out.println(User.getUserName());
-        if(User.getUserName().isEmpty() || User.getUserPassword().isEmpty())
-            return false;
+    public ResultInfo create(User User) {
+        if(User.getUserName().isEmpty())
+            return ResultInfo.NameIsNull;
+        if(User.getUserPassword().isEmpty())
+            return ResultInfo.PasswordIsNull;
+        if(User.getUserId() != 0)
+            return ResultInfo.IdIsNotNull;
         ru.iambelyaev.coincontrolserver.hibernate.services.UserService userService =
                 new ru.iambelyaev.coincontrolserver.hibernate.services.UserService();
+        if(userService.findUserByName(User.getUserName()).size() > 0)
+            return ResultInfo.AlreadyExist;
         ru.iambelyaev.coincontrolserver.hibernate.models.User dbUser =
                 new ru.iambelyaev.coincontrolserver.hibernate.models.User(User.getUserName(),User.getUserPassword());
         userService.saveUser(dbUser);
-        return true;
+        return ResultInfo.OK;
     }
 
     @Override
@@ -45,18 +51,26 @@ public class UserServiceImpl implements ru.iambelyaev.coincontrolserver.restapi.
     }
 
     @Override
-    public boolean update(ru.iambelyaev.coincontrolserver.restapi.model.User User) {
+    public ResultInfo update(ru.iambelyaev.coincontrolserver.restapi.model.User User) {
+        if(User.getUserName().isEmpty())
+            return ResultInfo.NameIsNull;
+        if(User.getUserPassword().isEmpty())
+            return ResultInfo.PasswordIsNull;
+        if(User.getUserId() == 0)
+            return ResultInfo.IdIsNull;
         ru.iambelyaev.coincontrolserver.hibernate.services.UserService userService =
                 new ru.iambelyaev.coincontrolserver.hibernate.services.UserService();
+        if(userService.findUserByName(User.getUserName()).size() > 0)
+            return ResultInfo.AlreadyExist;
         ru.iambelyaev.coincontrolserver.hibernate.models.User dbUser =
                 userService.findUser(User.getUserId());
         if( dbUser != null){
             dbUser.setName(User.getUserName());
             dbUser.setPassword(User.getUserPassword());
             userService.updateUser(dbUser);
-            return true;
+            return ResultInfo.OK;
         }
-        return false;
+        return ResultInfo.NotFoundId;
     }
 
     @Override
@@ -67,6 +81,7 @@ public class UserServiceImpl implements ru.iambelyaev.coincontrolserver.restapi.
                 userService.findUser(id);
         if(dbUser != null){
             userService.deleteUser(dbUser);
+            return true;
         }
         return false;
     }

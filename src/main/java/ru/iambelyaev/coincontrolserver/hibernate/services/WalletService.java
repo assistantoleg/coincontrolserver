@@ -1,14 +1,36 @@
 package ru.iambelyaev.coincontrolserver.hibernate.services;
 
+import ru.iambelyaev.coincontrolserver.hibernate.dao.WalletDao;
+import ru.iambelyaev.coincontrolserver.hibernate.models.User;
 import ru.iambelyaev.coincontrolserver.hibernate.models.Wallet;
 
-public interface WalletService {
+import java.util.List;
 
-    public Wallet findWallet(int id);
+public class WalletService {
 
-    public void saveWallet(Wallet wallet);
+    private WalletDao walletDao = new WalletDao();
 
-    public void deleteWallet(Wallet wallet);
+    public WalletService() {
+    }
 
-    public void updateWallet(Wallet wallet);
+    public Wallet findWallet(int id) {
+        return walletDao.findById(id);
+    }
+
+    public void saveWallet(Wallet wallet) {
+        walletDao.save(wallet);
+    }
+
+    public void deleteWallet(Wallet wallet) {
+        walletDao.delete(wallet);
+    }
+
+    public void updateWallet(Wallet wallet) {
+        walletDao.update(wallet);
+    }
+
+    public List<Wallet> findWalletByName(String name) {
+        return walletDao.findByName(name);
+    }
+
 }

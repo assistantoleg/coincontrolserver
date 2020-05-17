@@ -20,6 +20,10 @@ public class UserService {
         return usersDao.findById(id);
     }
 
+    public List<User> findUserByName(String name) {
+        return usersDao.findByName(name);
+    }
+
     public void saveUser(User user) {
         usersDao.save(user);
     }
@@ -36,9 +40,9 @@ public class UserService {
         return usersDao.findAll();
     }
 
-    public List<Operation> findOperationAll(int user_id) {
-        return usersDao.findOperationAll(user_id);
-    }
+//    public List<Operation> findOperationAll(int user_id) {
+//        return usersDao.findOperationAll(user_id);
+//    }
 
     public List<Wallet> findWalletAll(int user_id) {
         return usersDao.findWalletAll(user_id);

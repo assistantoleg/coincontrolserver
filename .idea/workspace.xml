@@ -11,11 +11,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Y89ezPXN4MQOiSczbekQ3kztDW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -30,6 +31,11 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.iambelyaev.coincontrolserver.storage.dao" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -111,10 +117,10 @@
       <screen x="43" y="23" width="1397" height="877" />
     </state>
     <state x="564" y="158" key="#com.intellij.ide.util.MemberChooser/43.23.1397.877@43.23.1397.877" timestamp="1582747889805" />
-    <state x="376" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586974289861">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589650410017">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1586952756562" />
+    <state x="346" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1589650410017" />
     <state x="376" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/39.23.1401.877@39.23.1401.877" timestamp="1586974289861" />
     <state width="1299" height="217" key="GridCell.Tab.0.bottom" timestamp="1583757032757">
       <screen x="43" y="23" width="1397" height="877" />

@@ -3,6 +3,8 @@ package ru.iambelyaev.coincontrolserver.hibernate.models;
 import javax.persistence.*;
 import ru.iambelyaev.coincontrolserver.hibernate.models.User;
 
+import java.util.List;
+
 @Entity
 @Table (name = "wallets")
 public class Wallet {
@@ -17,6 +19,12 @@ public class Wallet {
     private String name;
 
     private int money;
+
+//    @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @org.hibernate.annotations.OnDelete(
+//            action = org.hibernate.annotations.OnDeleteAction.CASCADE
+//    )
+//    private List<Operation> operations;
 
 
     public Wallet() {
@@ -51,6 +59,16 @@ public class Wallet {
     public int getMoney() {
         return money;
     }
+
+//    public void removeOperation(Operation operation) {
+//        operations.remove(operation);
+//    }
+//    public List<Operation> getOperations() {
+//        return operations;
+//    }
+//    public void setOperations(List<Operation> operations) {
+//        this.operations = operations;
+//    }
 
     @Override
     public String toString() {

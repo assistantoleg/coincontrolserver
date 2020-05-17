@@ -17,9 +17,6 @@ public class User {
     @Column(name = "user_password")
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Operation> operations;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @org.hibernate.annotations.OnDelete(
             action = org.hibernate.annotations.OnDeleteAction.CASCADE
@@ -59,19 +56,19 @@ public class User {
         this.password = password;
     }
 
-    public void addOperation(Operation operation) {
-        operation.setUser(this);
-        operations.add(operation);
-    }
-    public void removeOperation(Operation operation) {
-        operations.remove(operation);
-    }
-    public List<Operation> getOperations() {
-        return operations;
-    }
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
-    }
+//    public void addOperation(Operation operation) {
+//        operation.setUser(this);
+//        operations.add(operation);
+//    }
+//    public void removeOperation(Operation operation) {
+//        operations.remove(operation);
+//    }
+//    public List<Operation> getOperations() {
+//        return operations;
+//    }
+//    public void setOperations(List<Operation> operations) {
+//        this.operations = operations;
+//    }
 
     public void addCategory(Category category) {
         category.setUser(this);

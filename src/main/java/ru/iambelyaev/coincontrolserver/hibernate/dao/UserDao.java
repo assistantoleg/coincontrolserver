@@ -19,6 +19,16 @@ public class UserDao {
         return user;
     }
 
+    public List<User> findByName(String name) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List<User> users = (List<User>)
+                session.createQuery("from User WHERE user_name = :param_user_name")
+                        .setParameter("param_user_name", name)
+                        .list();
+        session.close();
+        return users;
+    }
+
     public void save(User user) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
@@ -53,16 +63,16 @@ public class UserDao {
         return users;
     }
 
-    public List<Operation> findOperationAll(int user_id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        List<Operation> operations = (List<Operation>)
-                session.createQuery("from Operation WHERE user_id = :param_user_id")
-                        .setParameter("param_user_id", user_id)
-                        .list();
-        session.close();
-        return operations;
-    }
-
+//    public List<Operation> findOperationAll(int user_id) {
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        List<Operation> operations = (List<Operation>)
+//                session.createQuery("from Operation WHERE user_id = :param_user_id")
+//                        .setParameter("param_user_id", user_id)
+//                        .list();
+//        session.close();
+//        return operations;
+//    }
+//
     public List<Wallet> findWalletAll(int user_id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         List<Wallet> wallets = (List<Wallet>)

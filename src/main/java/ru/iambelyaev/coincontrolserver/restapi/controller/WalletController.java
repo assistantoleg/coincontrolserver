@@ -4,14 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-//import ru.iambelyaev.coincontrolserver.restapi.model.Wallet;
-//import ru.iambelyaev.coincontrolserver.restapi.service.WalletService;
-import ru.iambelyaev.coincontrolserver.hibernate.services.WalletService;
-import ru.iambelyaev.coincontrolserver.hibernate.models.*;
+import ru.iambelyaev.coincontrolserver.restapi.model.Wallet;
+import ru.iambelyaev.coincontrolserver.restapi.service.WalletService;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 public class WalletController {
     private final WalletService WalletService;
 
@@ -22,49 +21,36 @@ public class WalletController {
 
     @PostMapping(value = "/wallet")
     public ResponseEntity<?> create(@RequestBody Wallet Wallet) {
-        return WalletService.create(Wallet);
-                ? new ResponseEntity<>(HttpStatus.CREATED)
-                : new ResponseEntity<String>("not found user", HttpStatus.NOT_FOUND);
+        switch (WalletService.create(Wallet)) {
+            case  OK:
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            case IdIsNull:
+                return new ResponseEntity<String>("UserId is null", HttpStatus.NOT_FOUND);
+            case IdIsNotNull:
+                return new ResponseEntity<String>("Id is not equal 0", HttpStatus.NOT_FOUND);
+            case AlreadyExist:
+                return new ResponseEntity<String>("Name already exists", HttpStatus.NOT_FOUND);
+            case NotFoundId:
+                return new ResponseEntity<String>("Not found userId", HttpStatus.NOT_FOUND);
+            case NameIsNull:
+                return new ResponseEntity<String>("WalletName is empty", HttpStatus.NOT_FOUND);
+            default:
+                return new ResponseEntity<String>("Unknown error", HttpStatus.NOT_FOUND);
+        }
     }
 
-//    @GetMapping(value = "/wallet/{userId}")
-//    public ResponseEntity<List<Wallet>> read(@PathVariable(name = "userId") int userId) {
-//        final List<Wallet> wallets = WalletService.readAll(userId);
-//        return wallets != null && !wallets.isEmpty()
-//                ? new ResponseEntity<>(wallets, HttpStatus.OK)
-//                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//
-//    @PutMapping(value = "/wallet")
-//    public ResponseEntity<?> update(@RequestBody Wallet Wallet) {
-//        final boolean updated = WalletService.update(Wallet);
-//
-//        return updated
-//                ? new ResponseEntity<>(HttpStatus.OK)
-//                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-//    }
-////    @PutMapping(value = "/Category/{id}")
-////    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Category Category) {
-////        final boolean updated = CategoryService.update(Category, id);
-////
-////        return updated
-////                ? new ResponseEntity<>(HttpStatus.OK)
-////                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-////    }
-//
-//    @DeleteMapping(value = "/wallet/{userId}/{walletId}")
-//    public ResponseEntity<?> delete(@PathVariable Integer userId, @PathVariable Integer walletId) {
-//        return WalletService.walletDelete(userId, walletId)
-//                ? new ResponseEntity<>(HttpStatus.OK)
-//                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-//    }
-//
-////    @DeleteMapping(value = "/category/{id}")
-////    public ResponseEntity<?> delete(@PathVariable Integer id) {
-////        System.out.println(id.toString());
-////        final boolean deleted = CategoryService.categoryDelete(id);
-////        return deleted
-////                ? new ResponseEntity<>(HttpStatus.OK)
-////                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-////    }
+    @GetMapping(value = "/wallet/{userId}")
+    public ResponseEntity<?> read(@PathVariable(name = "userId") int userId) {
+        final List<Wallet> wallets = WalletService.readAll(userId);
+        return !wallets.isEmpty()
+                ? new ResponseEntity<>(wallets, HttpStatus.OK)
+                : new ResponseEntity<String>("Not found wallets/userId", HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "/wallet/{userId}/{walletId}")
+    public ResponseEntity<?> delete(@PathVariable Integer userId, @PathVariable Integer walletId) {
+        return WalletService.walletDelete(userId, walletId)
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<String>("Not found walletId/userId", HttpStatus.NOT_FOUND);
+    }
 }

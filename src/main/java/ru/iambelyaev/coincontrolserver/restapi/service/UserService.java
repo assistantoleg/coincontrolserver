@@ -1,7 +1,7 @@
 package ru.iambelyaev.coincontrolserver.restapi.service;
 
 import ru.iambelyaev.coincontrolserver.restapi.model.User;
-
+import ru.iambelyaev.coincontrolserver.ResultInfo;
 import java.util.List;
 
 public interface UserService {
@@ -9,7 +9,7 @@ public interface UserService {
      * Создает новую категорию
      * @param User - категория для создания
      */
-    boolean create(User User);
+    ResultInfo create(User User);
 
     /**
      * Возвращает список всех имеющихся категорий
@@ -31,7 +31,7 @@ public interface UserService {
      * @param id - id клиента которого нужно обновить
      * @return - true если данные были обновлены, иначе false
      */
-    boolean update(User User);
+    ResultInfo update(User User);
 
     /**
      * Удаляет клиента с заданным ID
