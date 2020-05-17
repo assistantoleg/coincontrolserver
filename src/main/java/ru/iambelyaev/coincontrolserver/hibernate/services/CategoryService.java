@@ -2,6 +2,9 @@ package ru.iambelyaev.coincontrolserver.hibernate.services;
 
 import ru.iambelyaev.coincontrolserver.hibernate.dao.CategoryDao;
 import ru.iambelyaev.coincontrolserver.hibernate.models.Category;
+import ru.iambelyaev.coincontrolserver.hibernate.models.Wallet;
+
+import java.util.List;
 
 public class CategoryService {
 
@@ -24,5 +27,9 @@ public class CategoryService {
 
     public void updateCategory(Category category) {
         categoryDao.update(category);
+    }
+
+    public List<Category> findCategoryByName(String name, int userId) {
+        return categoryDao.findByName(name,userId);
     }
 }

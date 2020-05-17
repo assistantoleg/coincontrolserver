@@ -1,9 +1,12 @@
 package ru.iambelyaev.coincontrolserver.hibernate.dao;
 
 import ru.iambelyaev.coincontrolserver.hibernate.models.Category;
+import ru.iambelyaev.coincontrolserver.hibernate.models.Wallet;
 import ru.iambelyaev.coincontrolserver.hibernate.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class CategoryDao {
 
@@ -12,6 +15,17 @@ public class CategoryDao {
         Category category = session.get(Category.class, id);
         session.close();
         return category;
+    }
+
+    public List<Category> findByName(String name, int userId) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List<Category> categories = (List<Category>)
+                session.createQuery("from Category WHERE name = :category_name AND user_id = :user_id")
+                        .setParameter("category_name", name)
+                        .setParameter("user_id", userId)
+                        .list();
+        session.close();
+        return categories;
     }
 
     public void save(Category category) {

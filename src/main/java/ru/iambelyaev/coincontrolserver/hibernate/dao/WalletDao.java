@@ -17,11 +17,12 @@ public class WalletDao {
         return wallet;
     }
 
-    public List<Wallet> findByName(String name) {
+    public List<Wallet> findByName(String name, int userId) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         List<Wallet> wallets = (List<Wallet>)
-                session.createQuery("from Wallet WHERE name = :wallet_name")
+                session.createQuery("from Wallet WHERE name = :wallet_name AND user_id = :user_id")
                         .setParameter("wallet_name", name)
+                        .setParameter("user_id", userId)
                         .list();
         session.close();
         return wallets;

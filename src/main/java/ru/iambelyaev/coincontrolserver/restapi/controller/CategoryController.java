@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.iambelyaev.coincontrolserver.restapi.model.Category;
 import ru.iambelyaev.coincontrolserver.restapi.service.CategoryService;
+import ru.iambelyaev.coincontrolserver.ResultInfo;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 public class CategoryController {
     private final CategoryService CategoryService;
 
@@ -20,26 +22,41 @@ public class CategoryController {
 
     @PostMapping(value = "/category")
     public ResponseEntity<?> create(@RequestBody Category Category) {
-        return CategoryService.create(Category)
-                ? new ResponseEntity<>(HttpStatus.CREATED)
-                : new ResponseEntity<String>("not found user_id", HttpStatus.NOT_FOUND);
+
+        switch (CategoryService.create(Category)) {
+            case  OK:
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            case IdIsNull:
+                return new ResponseEntity<String>("UserId is null", HttpStatus.NOT_FOUND);
+            case IdIsNotNull:
+                return new ResponseEntity<String>("Id is not equal 0", HttpStatus.NOT_FOUND);
+            case AlreadyExist:
+                return new ResponseEntity<String>("Name already exists", HttpStatus.NOT_FOUND);
+            case NotFoundId:
+                return new ResponseEntity<String>("Not found userId", HttpStatus.NOT_FOUND);
+            case NameIsNull:
+                return new ResponseEntity<String>("CategoryName is empty", HttpStatus.NOT_FOUND);
+            default:
+                return new ResponseEntity<String>("Unknown error", HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/category/{userId}")
-    public ResponseEntity<List<Category>> read(@PathVariable(name = "userId") int userId) {
+    public ResponseEntity<?> read(@PathVariable(name = "userId") int userId) {
         final List<Category> Category = CategoryService.readAll(userId);
-        return Category != null && !Category.isEmpty()
+        return !Category.isEmpty()
                 ? new ResponseEntity<>(Category, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                : new ResponseEntity<String>("Not found categories/userId", HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value = "/category")
     public ResponseEntity<?> update(@RequestBody Category Category) {
-        final boolean updated = CategoryService.update(Category);
+//        final boolean updated = CategoryService.update(Category);
 
-        return updated
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+//        return updated
+//                ? new ResponseEntity<>(HttpStatus.OK)
+//                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 //    @PutMapping(value = "/Category/{id}")
 //    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody Category Category) {

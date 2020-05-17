@@ -1,6 +1,7 @@
 package ru.iambelyaev.coincontrolserver.restapi.service;
 
 import org.springframework.stereotype.Service;
+import ru.iambelyaev.coincontrolserver.ResultInfo;
 import ru.iambelyaev.coincontrolserver.restapi.model.Category;
 import ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService;
 import ru.iambelyaev.coincontrolserver.hibernate.models.*;
@@ -19,9 +20,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.restapi.service.CategoryService {
     @Override
-    public boolean create(Category Category) {
+    public ResultInfo create(Category Category) {
+        if(Category.getCategoryName().isEmpty())
+            return ResultInfo.NameIsNull;
+        if(Category.getUserId() == 0)
+            return ResultInfo.IdIsNull;
+        if(Category.getCategoryId() != 0)
+            return ResultInfo.IdIsNotNull;
         ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService categoryService =
                 new ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService();
+        if(categoryService.findCategoryByName(Category.getCategoryName(),Category.getUserId()).size() > 0)
+            return ResultInfo.AlreadyExist;
         ru.iambelyaev.coincontrolserver.hibernate.models.Category dbCategory =
                 new ru.iambelyaev.coincontrolserver.hibernate.models.Category(Category.getCategoryName());
 
@@ -31,9 +40,9 @@ public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.rest
         if(dbUser != null) {
             dbCategory.setUser(dbUser);
             categoryService.saveCategory(dbCategory);
-            return true;
+            return ResultInfo.OK;
         }
-        return false;
+        return ResultInfo.NotFoundId;
     }
 
     @Override
@@ -58,17 +67,18 @@ public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.rest
 //    }
 
     @Override
-    public boolean update(Category Category) {
-        ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService categoryService =
-                new ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService();
-        ru.iambelyaev.coincontrolserver.hibernate.models.Category dbCategory =
-                categoryService.findCategory(Category.getCategoryId());
-        if( dbCategory.getUser().getId() == Category.getUserId()){
-            dbCategory.setName(Category.getCategoryName());
-            categoryService.updateCategory(dbCategory);
-            return true;
-        }
-        return false;
+    public ResultInfo update(Category Category) {
+//        ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService categoryService =
+//                new ru.iambelyaev.coincontrolserver.hibernate.services.CategoryService();
+//        ru.iambelyaev.coincontrolserver.hibernate.models.Category dbCategory =
+//                categoryService.findCategory(Category.getCategoryId());
+//        if( dbCategory.getUser().getId() == Category.getUserId()){
+//            dbCategory.setName(Category.getCategoryName());
+//            categoryService.updateCategory(dbCategory);
+//            return true;
+//        }
+//        return false;
+        return ResultInfo.OK;
     }
 
     @Override
@@ -85,7 +95,7 @@ public class CategoryServiceImpl implements ru.iambelyaev.coincontrolserver.rest
     }
 
     @Override
-    public boolean subcategoryDelete(int categoryId, int subcategoryId) {
+    public boolean subCategoryDelete(int categoryId, int subCategoryId) {
         return true;
     }
 }

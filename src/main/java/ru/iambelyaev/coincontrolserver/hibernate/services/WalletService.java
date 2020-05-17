@@ -29,8 +29,8 @@ public class WalletService {
         walletDao.update(wallet);
     }
 
-    public List<Wallet> findWalletByName(String name) {
-        return walletDao.findByName(name);
+    public List<Wallet> findWalletByName(String name, int userId) {
+        return walletDao.findByName(name,userId);
     }
 
 }

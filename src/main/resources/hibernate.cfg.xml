@@ -7,7 +7,7 @@
     <session-factory>
 
         <!-- Connection settings -->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost/postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost/test</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">oleg</property>
 

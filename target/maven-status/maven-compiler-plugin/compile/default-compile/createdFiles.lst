@@ -11,6 +11,7 @@ ru/iambelyaev/coincontrolserver/restapi/model/Category.class
 ru/iambelyaev/coincontrolserver/restapi/service/UserServiceImpl.class
 ru/iambelyaev/coincontrolserver/hibernate/models/Wallet.class
 ru/iambelyaev/coincontrolserver/hibernate/services/UserService.class
+ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController$1.class
 ru/iambelyaev/coincontrolserver/App.class
 ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController.class
 ru/iambelyaev/coincontrolserver/restapi/controller/WalletController.class

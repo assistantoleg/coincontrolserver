@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="682a69e5-99fa-48af-a343-13357e90c711" name="Default Changelist" comment="" />
+    <list default="true" id="682a69e5-99fa-48af-a343-13357e90c711" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/models/SubCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/CategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/CategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/WalletDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/dao/WalletDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/hibernate/services/WalletService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/WalletServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/iambelyaev/coincontrolserver/restapi/service/WalletServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>

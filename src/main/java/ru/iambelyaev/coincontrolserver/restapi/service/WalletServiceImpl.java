@@ -19,7 +19,7 @@ public class WalletServiceImpl implements ru.iambelyaev.coincontrolserver.restap
             return ResultInfo.IdIsNotNull;
         ru.iambelyaev.coincontrolserver.hibernate.services.WalletService walletService =
                 new ru.iambelyaev.coincontrolserver.hibernate.services.WalletService();
-        if(walletService.findWalletByName(Wallet.getWalletName()).size() > 0)
+        if(walletService.findWalletByName(Wallet.getWalletName(),Wallet.getUserId()).size() > 0)
             return ResultInfo.AlreadyExist;
         ru.iambelyaev.coincontrolserver.hibernate.models.Wallet dbWallet =
                 new ru.iambelyaev.coincontrolserver.hibernate.models.Wallet(Wallet.getWalletName(), Wallet.getWalletMoney());
